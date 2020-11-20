@@ -2,7 +2,7 @@
     <div [class.loading]="(loading$ | async)" id="post-list" *ngIf="!(error$ | async); else error">
 
         <div class="row my-5">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <form (ngSubmit)="addItem()" class="border border-1 border-success p-4">
 
                     <div class="form-group">
@@ -22,6 +22,11 @@
 
                     <button type="submit" class="btn btn-success btn-sm">Add Post</button>
                 </form>
+            </div>
+            <div class="col-md-4" *ngIf="!(loadingPost$ | async) && (post | async)">
+                <h5>{{ (post | async).title }}</h5>
+                <p>{{ (post | async).description }}</p>
+                <img [src]="(post | async).image_url" class="img-thumbnail">
             </div>
         </div>
 
@@ -48,6 +53,7 @@
                             <td>{{ post.title }}</td>
                             <td>{{ post.description }}</td>
                             <td class="text-center">
+                                <button (click)="showItem(post.id)" class="btn btn-outline-info btn-sm">Show</button>
                                 <button (click)="deleteItem(post.id)" class="btn btn-outline-danger btn-sm">Remove</button>
                             </td>
                         </tr>

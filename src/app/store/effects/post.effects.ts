@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { PostService } from 'src/app/services/post.service';
-import { AddItemAction, AddItemFailureAction, AddItemSuccessAction, DeleteItemAction, DeleteItemFailureAction, DeleteItemSuccessAction, LoadPostAction, LoadPostFailureAction, LoadPostSuccessAction, PostActionTypes } from 'src/app/store/actions/post.actions';
+import { AddItemAction, AddItemFailureAction, AddItemSuccessAction, DeleteItemAction, DeleteItemFailureAction, DeleteItemSuccessAction, LoadPostAction, LoadPostFailureAction, LoadPostSuccessAction, PostActionTypes, ShowItemAction, ShowItemFailureAction, ShowItemSuccessAction } from 'src/app/store/actions/post.actions';
 
 @Injectable()
 export class PostEffects {
@@ -42,6 +42,18 @@ export class PostEffects {
       (data) => this.postService.deletePost(data.payload).pipe(
         map(() => new DeleteItemSuccessAction(data.payload)),
         catchError(error => of(new DeleteItemFailureAction(error)))
+      )
+    )
+  )
+
+  @Effect() showItem$ = this.actions$.pipe(
+    ofType<ShowItemAction>(PostActionTypes.SHOW_ITEM),
+    mergeMap(
+      (data) => this.postService.getPost(data.id).pipe(
+        map(data => {
+          return new ShowItemSuccessAction(data)
+        }),
+        catchError(error => of(new ShowItemFailureAction(error)))
       )
     )
   )

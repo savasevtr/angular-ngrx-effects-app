@@ -4,13 +4,17 @@ import { Post } from "../models/post.model";
 export interface PostState {
   list: Post[],
   loading: boolean,
-  error: Error
+  error: Error,
+  post: Post,
+  post_loading: boolean
 };
 
 const initialState: PostState = {
   list: [],
   loading: false,
-  error: undefined
+  error: undefined,
+  post: undefined,
+  post_loading: false
 };
 
 export function PostReducer(state: PostState = initialState, action: PostAction) {
@@ -59,6 +63,23 @@ export function PostReducer(state: PostState = initialState, action: PostAction)
         ...state,
         error: action.payload,
         loading: false
+      };
+    case PostActionTypes.SHOW_ITEM:
+      return {
+        ...state,
+        post_loading: true
+      };
+    case PostActionTypes.SHOW_ITEM_SUCCESS:
+      return {
+        ...state,
+        post: action.payload,
+        post_loading: false
+      };
+    case PostActionTypes.SHOW_ITEM_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        post_loading: false
       };
     default:
       return state;

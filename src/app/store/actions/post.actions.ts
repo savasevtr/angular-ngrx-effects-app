@@ -2,15 +2,18 @@ import { Action } from '@ngrx/store';
 import { Post } from '../models/post.model'
 
 export enum PostActionTypes {
-  LOAD_POST = '[POST] Load POST',
-  LOAD_POST_SUCCESS = '[POST] Load POST Success',
-  LOAD_POST_FAILURE = '[POST] Load POST Failure',
+  LOAD_POST = '[POST] Load Post',
+  LOAD_POST_SUCCESS = '[POST] Load Post Success',
+  LOAD_POST_FAILURE = '[POST] Load Post Failure',
   ADD_ITEM = '[POST] Add Item',
   ADD_ITEM_SUCCESS = '[POST] Add Item Success',
   ADD_ITEM_FAILURE = '[POST] Add Item Failure',
   DELETE_ITEM = '[POST] Delete Item',
   DELETE_ITEM_SUCCESS = '[POST] Delete Item Success',
-  DELETE_ITEM_FAILURE = '[POST] Delete Item Failure'
+  DELETE_ITEM_FAILURE = '[POST] Delete Item Failure',
+  SHOW_ITEM = '[POST] Show Item',
+  SHOW_ITEM_SUCCESS = '[POST] Show Item Success',
+  SHOW_ITEM_FAILURE = '[POST] Show Item Failure'
 }
 
 export class LoadPostAction implements Action {
@@ -65,6 +68,24 @@ export class DeleteItemFailureAction implements Action {
   constructor(public payload: string) { }
 }
 
+export class ShowItemAction implements Action {
+  readonly type = PostActionTypes.SHOW_ITEM
+
+  constructor(public id: string) { }
+}
+
+export class ShowItemSuccessAction implements Action {
+  readonly type = PostActionTypes.SHOW_ITEM_SUCCESS
+
+  constructor(public payload: Post) { }
+}
+
+export class ShowItemFailureAction implements Action {
+  readonly type = PostActionTypes.SHOW_ITEM_FAILURE
+
+  constructor(public payload: Error) { }
+}
+
 export type PostAction = AddItemAction |
   AddItemSuccessAction |
   AddItemFailureAction |
@@ -73,4 +94,7 @@ export type PostAction = AddItemAction |
   DeleteItemFailureAction |
   LoadPostAction |
   LoadPostFailureAction |
-  LoadPostSuccessAction
+  LoadPostSuccessAction |
+  ShowItemAction |
+  ShowItemSuccessAction |
+  ShowItemFailureAction;

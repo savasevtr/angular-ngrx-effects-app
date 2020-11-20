@@ -26,4 +26,8 @@ export class PostService {
   deletePost(id: string) {
     return this.httpClient.delete(`${this.POST_API_URL}/${id}`).pipe(delay(500));
   }
+
+  getPost(id: string) {
+    return this.httpClient.get<Post>(`${this.POST_API_URL}/${id}`).pipe(delay(500));
+  }
 }
