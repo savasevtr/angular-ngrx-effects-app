@@ -1,3 +1,28 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "id": "25e5d2f4-c30a-45eb-8a23-c937a78a5a9f",
+      "title": "post title 1",
+      "description": "post description 1",
+      "image_url": "https://images.unsplash.com/photo-1473958828028-53df95f0b5ed?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
+    },
+    {
+      "id": "1c6b46ea-337a-4c84-89b5-3830ce2eaec1",
+      "title": "post title 2",
+      "description": "post description 2",
+      "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyr_uRJETLlXrDRRPYvokwb1c9ig2CXiyFQ&usqp=CAU"
+    },
+    {
+      "id": "0be319e6-fc79-4efc-9a42-8decdfd6da2a",
+      "title": "post title 3",
+      "description": "post description 3",
+      "image_url": "https://www.w3schools.com/howto/img_forest.jpg"
+    },
+    {
+      "id": "4b411f67-0bba-4b1e-8bd0-f5969410f5d4",
+      "title": "post title 4",
+      "description": "post description 4",
+      "image_url": "https://cdntr1.img.sputniknews.com/img/103535/62/1035356236_0:53:1200:728_1200x0_80_0_1_01db1b1be21d21b3449ad02740419e29.jpg"
+    }
+  ]
 }

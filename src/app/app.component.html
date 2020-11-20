@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <h5>Posts</h5>
 
-                <table class="table table-sm" *ngIf="(posts | async) else noItems">
+                <table class="table table-bordered table-sm" *ngIf="(posts | async); else noItems">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" class="text-center">#</th>
@@ -63,10 +63,10 @@
         </div>
 
     </div>
-</div>
 
-<ng-template #error>
-    <div class="alert alert-warning" role="alert">
-        <p>{{(error$ | async)?.message}}</p>
-    </div>
-</ng-template>
+    <ng-template #error>
+        <div class="alert alert-danger mt-5" role="alert">
+            <p>{{(error$ | async)?.message}}</p>
+        </div>
+    </ng-template>
+</div>

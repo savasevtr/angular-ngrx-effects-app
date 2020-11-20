@@ -16,7 +16,7 @@ export class PostService {
   ) { }
 
   getPosts() {
-    return this.httpClient.get<Array<Post>>(this.POST_API_URL).pipe(delay(500));
+    return this.httpClient.get<Array<Post>>(this.POST_API_URL).pipe(delay(3000));
   }
 
   addPost(post: Post) {
